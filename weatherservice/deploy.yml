@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: weatherservice
+  name: weather
 spec:
   replicas: 2
   selector:
@@ -13,7 +13,7 @@ spec:
         app: weather # pod 의 label
     spec:
       containers:
-        - name: weatherservice
+        - name: weather
           image: public.ecr.aws/a5p8o7q9/weatherservice:v1 # ECR의 image
           ports:
             - containerPort: 8080 # container 의 port

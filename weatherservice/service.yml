@@ -6,6 +6,6 @@ spec: # 리소스의 구성을 정의
   selector:
     app: weather # pod 에 붙어진 label과 연결될 selector
   ports:
-    - name: weatherservice # 서비스 port의 이름
-      port: 80 # 서비스의 port
+    - name: weatherservice # 서비스 port의 이름 - 이게 ingress 의 serviceport와 이름이 매칭되어야 함
+      port: 8080 # 서비스의 port
       targetPort: 8080 # container의 port
