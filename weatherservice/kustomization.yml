@@ -3,11 +3,10 @@ kind: Kustomization
 metadata:
   name: weather
 resources:
-  - deployment.yaml
-  - service.yaml
-spec:
-  ingress:
-    - path: /weather
-      backend:
-        serviceName: weatherservice
-        servicePort: 8080
+  - deploy.yml
+  - service.yml
+ingress:
+  - path: /weather
+    backend:
+      serviceName: weatherservice
+      servicePort: 8090

@@ -5,9 +5,8 @@ metadata:
 resources:
   - deploy.yml
   - service.yml
-spec:
-  ingress:
-    - path: /air
-      backend:
-        serviceName: airservice
-        servicePort: 8090
+ingress:
+  - path: /air
+    backend:
+      serviceName: airservice
+      servicePort: 8090
