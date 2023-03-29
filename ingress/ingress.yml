@@ -10,11 +10,11 @@ spec:
   rules:
     - http:
         paths:
-          - path: /weatherservice
+          - path: /weather
             backend:
               serviceName: weatherservice
               servicePort: 8080
-          - path: /airservice
+          - path: /air
             backend:
               serviceName: airservice
               servicePort: 8090
