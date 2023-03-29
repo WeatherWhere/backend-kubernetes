@@ -11,10 +11,16 @@ spec:
     - http:
         paths:
           - path: /weather
+            pathType: Prefix
             backend:
-              serviceName: weatherservice
-              servicePort: 8080
+              service:
+                name: weatherservice
+                port:
+                  number: 8080
           - path: /air
+            pathType: Prefix
             backend:
-              serviceName: airservice
-              servicePort: 8090
+              service:
+                name: airservice
+                port:
+                  number: 8090
