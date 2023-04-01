@@ -7,5 +7,5 @@ spec: # 리소스의 구성을 정의
     app: air # pod 에 붙어진 label과 연결될 selector
   ports:
     - name: airservice # 서비스 port의 이름 - 이게 ingress 의 serviceport와 이름이 매칭되어야 함
-      port: 8080 # 서비스의 port
-      targetPort: 8080 # container의 port
+      port: 8090 # 서비스의 port
+      targetPort: 8090 # container의 port
