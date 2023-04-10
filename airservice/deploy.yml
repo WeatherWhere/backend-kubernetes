@@ -16,4 +16,4 @@ spec:
         - name: air
           image: public.ecr.aws/a5p8o7q9/airservice:v48 # ECR의 image
           ports:
-            - containerPort: 8090 # container 의 port
+            - containerPort: 8080 # container 의 port
