@@ -25,3 +25,10 @@ spec:
                 name: airservice
                 port:
                   number: 8090
+          - path: /tour
+            pathType: Prefix
+            backend:
+              service:
+                name: tourservice
+                port:
+                  number: 8070
