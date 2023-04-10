@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: air
+spec:
+  replicas: 2
+  selector:
+    matchLabels: # ReplicaSet이 제어해야 하는 파드를 결정
+      app: air
+  template:
+    metadata:
+      labels:
+        app: air # pod 의 label
+    spec:
+      containers:
+        - name: air
+          image: public.ecr.aws/a5p8o7q9/airservice:v48 # ECR의 image
+          ports:
+            - containerPort: 8080 # container 의 port

@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: weatherwhere-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: subnet-0e7d902485f0078c5, subnet-0fb099b474c0dcd09
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /weather
+            pathType: Prefix
+            backend:
+              service:
+                name: weatherservice
+                port:
+                  number: 8080
+          - path: /air
+            pathType: Prefix
+            backend:
+              service:
+                name: airservice
+                port:
+                  number: 8090
+          - path: /tour
+            pathType: Prefix
+            backend:
+              service:
+                name: tourservice
+                port:
+                  number: 8070
