@@ -7,6 +7,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/subnets: subnet-0e7d902485f0078c5, subnet-0fb099b474c0dcd09
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=1200
 spec:
   rules:
     - http:
