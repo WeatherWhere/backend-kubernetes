@@ -5,9 +5,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: <your-repo-url-here>
-    path: <path-to-your-charts-folder>
-    targetRevision: <your-target-revision-here>
+    repoURL: https://github.com/WeatherWhere/backend-kubernetes.git
+    path: weather
+    targetRevision: v1
     helm:
       values:
         ingress:
@@ -51,7 +51,7 @@ spec:
             appLabel: tour
   destination:
     server: https://kubernetes.default.svc
-    namespace: <your-namespace-here>
+    namespace: test
   syncPolicy:
     automated:
       prune: true
