@@ -40,3 +40,5 @@ tour:
   servicePort: 8070
   servicePortName: tourservice
   appLabel: tour
+
+fullnameOverride: weatherwhere
