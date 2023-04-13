@@ -1,15 +1,14 @@
+{{- range $application := .Values.applications }}
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "weatherwhere.fullname" . }}-test-connection"
+  name: {{ include "weatherwhere.fullname" $application }}-test-connection
   labels:
-    {{- include "weatherwhere.labels" . | nindent 4 }}
-  annotations:
-    "helm.sh/hook": test
+    app: {{ $application.appLabel }}
 spec:
   containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['{{ include "weatherwhere.fullname" . }}:{{ .Values.applications.port }}']
+    - name: curl
+      image: curlimages/curl
+      command: ["sh", "-c", "curl -s -o /dev/null -w '%{http_code}' {{ $application.name }}-{{ $application.servicePortName }}-service:{{ $application.servicePort }}/{{ $application.name }}"]
   restartPolicy: Never
+{{- end }}
