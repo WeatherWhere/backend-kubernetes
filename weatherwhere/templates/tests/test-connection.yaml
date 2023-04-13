@@ -1,14 +1,60 @@
-{{- range $application := .Values.applications }}
-apiVersion: v1
-kind: Pod
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: {{ include "weatherwhere.fullname" $application }}-test-connection
-  labels:
-    app: {{ $application.appLabel }}
+  name: weatherwhere-test-connection
 spec:
-  containers:
-    - name: curl
-      image: curlimages/curl
-      command: ["sh", "-c", "curl -s -o /dev/null -w '%{http_code}' {{ $application.name }}-{{ $application.servicePortName }}-service:{{ $application.servicePort }}/{{ $application.name }}"]
-  restartPolicy: Never
-{{- end }}
+  project: default
+  source:
+    repoURL: <your-repo-url-here>
+    path: <path-to-your-charts-folder>
+    targetRevision: <your-target-revision-here>
+    helm:
+      values:
+        ingress:
+          pathMappings:
+            - path: /weather
+              service: weatherservice
+              port: 8080
+            - path: /air
+              service: airservice
+              port: 8090
+            - path: /tour
+              service: tourservice
+              port: 8070
+        applications:
+          - name: air
+            image:
+              repository: public.ecr.aws/a5p8o7q9/airservice
+              tag: v56
+            replicas: 2
+            port: 8080
+            servicePort: 8090
+            servicePortName: airservice
+            appLabel: air
+          - name: weather
+            image:
+              repository: public.ecr.aws/a5p8o7q9/weatherservice
+              tag: v61
+            replicas: 2
+            port: 8080
+            servicePort: 8080
+            servicePortName: weatherservice
+            appLabel: weather
+          - name: tour
+            image:
+              repository: public.ecr.aws/a5p8o7q9/tourservice
+              tag: v19
+            replicas: 2
+            port: 8080
+            servicePort: 8070
+            servicePortName: tourservice
+            appLabel: tour
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: <your-namespace-here>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
