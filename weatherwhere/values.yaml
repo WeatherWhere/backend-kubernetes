@@ -1,3 +1,15 @@
+ingress:
+  pathMappings:
+    - path: /weather
+      service: weatherservice
+      port: 8080
+    - path: /air
+      service: airservice
+      port: 8090
+    - path: /tour
+      service: tourservice
+      port: 8070
+
 applications:
   - name: air
     image:
