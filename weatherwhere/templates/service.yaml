@@ -1,13 +1,13 @@
-{{- range $application := .Values.applications }}
+{{- range $app := .Values.applications }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ $application.name }}-service
+  name: {{ .name }}-service
 spec:
   selector:
-    app: {{ $application.name }}
+    app: {{ .name }}
   ports:
     - name: http
-      port: {{ $application.servicePort }}
-      targetPort: {{ $application.port }}
+      port: {{ .servicePort }}
+      targetPort: {{ .port }}
 {{- end }}
