@@ -11,15 +11,15 @@ ingress:
       port: 8070
 
 applications:
-  - name: air
-    image:
-      repository: public.ecr.aws/a5p8o7q9/airservice
-      tag: v56
-    replicas: 2
-    port: 8080
-    servicePort: 8090
-    servicePortName: airservice
-    appLabel: air
+air:
+  image:
+    repository: public.ecr.aws/a5p8o7q9/airservice
+    tag: v56
+  replicas: 2
+  port: 8080
+  servicePort: 8090
+  servicePortName: airservice
+  appLabel: air
 
 weather:
   image:
