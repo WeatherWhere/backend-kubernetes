@@ -14,7 +14,7 @@ applications:
   - name: tour
     replicas: 2
     servicePort: 8070
-    continer:
+    container:
       image:
         repository: public.ecr.aws/a5p8o7q9/tourservice
         tag: v19
@@ -23,7 +23,7 @@ applications:
   - name: weather
     replicas: 2
     servicePort: 8080
-    continer:
+    container:
       image:
         repository: public.ecr.aws/a5p8o7q9/weatherservice
         tag: v61
