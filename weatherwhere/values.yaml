@@ -1,19 +1,8 @@
-ingress:
-  pathMappings:
-    - path: /weather
-      service: weatherservice
-      port: 8080
-    - path: /air
-      service: airservice
-      port: 8090
-    - path: /tour
-      service: tourservice
-      port: 8070
-
 applications:
   - name: air
     image:
-      repository: public.ecr.aws/a5p8o7q9/airservice:v56
+      repository: public.ecr.aws/a5p8o7q9/airservice
+      tag: v56
     replicas: 2
     port: 8080
     servicePort: 8090
@@ -22,7 +11,8 @@ applications:
 
   - name: weather
     image:
-      repository: public.ecr.aws/a5p8o7q9/weatherservice:v61
+      repository: public.ecr.aws/a5p8o7q9/weatherservice
+      tag: v61
     replicas: 2
     port: 8080
     servicePort: 8080
@@ -31,7 +21,8 @@ applications:
 
   - name: tour
     image:
-      repository: public.ecr.aws/a5p8o7q9/tourservice:v19
+      repository: public.ecr.aws/a5p8o7q9/tourservice
+      tag: v19
     replicas: 2
     port: 8080
     servicePort: 8070
