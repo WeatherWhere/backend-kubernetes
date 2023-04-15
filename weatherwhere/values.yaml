@@ -19,16 +19,6 @@ applications:
         repository: public.ecr.aws/a5p8o7q9/tourservice
         tag: v19
       port: 8080
-    fullnameOverride: weatherwhere
-
-  - name: weather
-    replicas: 2
-    servicePort: 8080
-    container:
-      image:
-        repository: public.ecr.aws/a5p8o7q9/weatherservice
-        tag: v61
-      port: 8080
 
   - name: air
     replicas: 2
@@ -37,4 +27,13 @@ applications:
       image:
         repository: public.ecr.aws/a5p8o7q9/airservice
         tag: v56
+      port: 8080
+
+  - name: weather
+    replicas: 2
+    servicePort: 8080
+    container:
+      image:
+        repository: public.ecr.aws/a5p8o7q9/weatherservice
+        tag: v61
       port: 8080
