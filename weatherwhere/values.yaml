@@ -11,34 +11,31 @@ ingress:
       port: 8070
 
 applications:
-  - name: weather
-    image:
-      repository: public.ecr.aws/a5p8o7q9/weatherservice
-      tag: v61
-    replicas: 2
-    port: 8080
-    servicePort: 8080
-    servicePortName: weather
-    appLabel: weather
-
   - name: tour
-    image:
-      repository: public.ecr.aws/a5p8o7q9/tourservice
-      tag: v19
     replicas: 2
-    port: 8080
     servicePort: 8070
-    servicePortName: tour
-    appLabel: tour
+    continer:
+      image:
+        repository: public.ecr.aws/a5p8o7q9/tourservice
+        tag: v19
+      port: 8080
+
+  - name: weather
+    replicas: 2
+    servicePort: 8080
+    continer:
+      image:
+        repository: public.ecr.aws/a5p8o7q9/weatherservice
+        tag: v61
+      port: 8080
 
   - name: air
-    image:
-      repository: public.ecr.aws/a5p8o7q9/airservice
-      tag: v56
     replicas: 2
-    port: 8080
     servicePort: 8090
-    servicePortName: air
-    appLabel: air
+    container:
+      image:
+        repository: public.ecr.aws/a5p8o7q9/airservice
+        tag: v56
+      port: 8080
 
 fullnameOverride: weatherwhere
