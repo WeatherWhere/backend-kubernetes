@@ -6,20 +6,20 @@ spec:
   project: default
   source:
     repoURL: https://github.com/WeatherWhere/backend-kubernetes.git
-    path: weather
-    targetRevision: v1
+    path: weatherwhere
+    targetRevision: feat/add-HelmChart
     helm:
       values:
         ingress:
           pathMappings:
             - path: /weather
-              service: weatherservice
+              service: weather
               port: 8080
             - path: /air
-              service: airservice
+              service: air
               port: 8090
             - path: /tour
-              service: tourservice
+              service: tour
               port: 8070
         applications:
           - name: air
@@ -29,7 +29,7 @@ spec:
             replicas: 2
             port: 8080
             servicePort: 8090
-            servicePortName: airservice
+            servicePortName: air
             appLabel: air
           - name: weather
             image:
@@ -38,7 +38,7 @@ spec:
             replicas: 2
             port: 8080
             servicePort: 8080
-            servicePortName: weatherservice
+            servicePortName: weather
             appLabel: weather
           - name: tour
             image:
@@ -47,7 +47,7 @@ spec:
             replicas: 2
             port: 8080
             servicePort: 8070
-            servicePortName: tourservice
+            servicePortName: tour
             appLabel: tour
   destination:
     server: https://kubernetes.default.svc

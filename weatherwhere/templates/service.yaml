@@ -5,7 +5,7 @@ metadata:
   name: {{ $application.name }}-service
 spec:
   selector:
-    app: {{ $application.servicePortName }}
+    app: {{ $application.name }}
   ports:
     - name: http
       port: {{ $application.servicePort }}
