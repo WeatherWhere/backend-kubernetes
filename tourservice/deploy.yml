@@ -17,3 +17,10 @@ spec:
           image: public.ecr.aws/a5p8o7q9/tourservice:v19 # ECR의 image
           ports:
             - containerPort: 8080 # container 의 port
+          volumeMounts:
+            - name: tour-log
+              mountPath: /var/log/pods # Mount the volume to the container's file system
+      volumes:
+        - name: tour-log
+          hostPath:
+            path: /var/log/pods # Mount the volume to the host file system
