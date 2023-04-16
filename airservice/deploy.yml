@@ -17,10 +17,3 @@ spec:
           image: public.ecr.aws/a5p8o7q9/airservice:v56 # ECR의 image
           ports:
             - containerPort: 8080 # container 의 port
-          volumeMounts:
-            - name: air-log
-              mountPath: /var/log/pods # Mount the volume to the container's file system
-      volumes:
-        - name: air-log
-          hostPath:
-            path: /var/log/pods # Mount the volume to the host file system
