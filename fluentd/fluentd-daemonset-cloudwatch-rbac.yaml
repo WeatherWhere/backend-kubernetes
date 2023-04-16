@@ -51,7 +51,7 @@ spec:
   template:
     metadata:
       annotations:
-        iam.amazonaws.com/role: us-east-1a.staging.kubernetes.ruist.io-service-role
+        iam.amazonaws.com/role: arn:aws:iam::011454716472:role/weatherwhere-fluentd
       labels:
         k8s-app: fluentd-logging
         version: v1
@@ -72,9 +72,9 @@ spec:
               fieldRef:
                 fieldPath: spec.nodeName
           - name: LOG_GROUP_NAME
-            value: "k8s"
+            value: "/aws/eks/weatherwhere/logging"
           - name: AWS_REGION
-            value: "us-east-1"
+            value: "ap-northeast-2"
         resources:
           limits:
             memory: 200Mi
