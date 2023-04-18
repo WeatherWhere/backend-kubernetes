@@ -9,7 +9,6 @@ metadata:
     alb.ingress.kubernetes.io/subnets: subnet-0e7d902485f0078c5, subnet-0fb099b474c0dcd09
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=1200
     alb.ingress.kubernetes.io/cors-allow-origin: "*"
-    alb.ingress.kubernetes.io/ssl-redirect: "true"
     alb.ingress.kubernetes.io/ssl-protocols: TLSv1.2
     alb.ingress.kubernetes.io/ssl-ciphers: ECDHE-RSA-AES128-GCM-SHA256
 spec:
