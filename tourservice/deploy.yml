@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: tour
-          image: public.ecr.aws/a5p8o7q9/tourservice:v25 # ECR의 image
+          image: public.ecr.aws/a5p8o7q9/tourservice:v26 # ECR의 image
           ports:
             - containerPort: 8080 # container 의 port
