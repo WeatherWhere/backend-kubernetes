@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: weather
-          image: public.ecr.aws/a5p8o7q9/weatherservice:v86 # ECR의 image
+          image: public.ecr.aws/a5p8o7q9/weatherservice:v87 # ECR의 image
           ports:
             - containerPort: 8080 # container 의 port
