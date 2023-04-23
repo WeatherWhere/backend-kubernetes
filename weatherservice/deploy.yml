@@ -9,6 +9,8 @@ spec:
       app: weather
   template:
     metadata:
+      annotations:
+        iam.amazonaws.com/role: arn:aws:iam::011454716472:role/weatherwhere-fluentd
       labels:
         app: weather # pod 의 label
     spec:
@@ -17,3 +19,27 @@ spec:
           image: public.ecr.aws/a5p8o7q9/weatherservice:v89 # ECR의 image
           ports:
             - containerPort: 8080 # container 의 port
+        - name: fluentd
+          image: fluent/fluentd-kubernetes-daemonset:v1-debian-cloudwatch
+          env:
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: LOG_GROUP_NAME
+              value: "/aws/eks/weatherwhere/logging"
+            - name: AWS_REGION
+              value: "ap-northeast-2"
+          resources:
+            limits:
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+          volumeMounts:
+            - name: varlog
+              mountPath: /var/log
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
