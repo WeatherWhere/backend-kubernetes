@@ -19,4 +19,4 @@ spec:
             - containerPort: 8080 # container 의 port
           resources: # resources 필드 추가
             requests:
-              cpu: "200m" # CPU request 값 설정
+              cpu: "100m" # CPU request 값 설정
