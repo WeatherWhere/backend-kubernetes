@@ -17,3 +17,6 @@ spec:
           image: public.ecr.aws/a5p8o7q9/airservice:v74 # ECR의 image
           ports:
             - containerPort: 8080 # container 의 port
+          resources: # resources 필드 추가
+            requests:
+              cpu: "100m" # CPU request 값 설정
